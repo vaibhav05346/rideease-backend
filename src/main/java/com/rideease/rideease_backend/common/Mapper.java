@@ -16,6 +16,6 @@ public class Mapper {
 
     public static RideModel rideEntityToRideModel(Ride rideEntity)
     {
-        return new RideModel(rideEntity.getSource(),rideEntity.getDestination(),rideEntity.getRiderName());
+        return new RideModel(rideEntity.getSource(),rideEntity.getDestination(),rideEntity.getRiderName(),rideEntity.getPickupTime(), rideEntity.getStatus());
     }
 }

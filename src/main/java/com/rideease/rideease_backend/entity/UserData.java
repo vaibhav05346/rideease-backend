@@ -1,4 +1,4 @@
-package com.rideease.rideease_backend.model;
+package com.rideease.rideease_backend.entity;
 
 
 import jakarta.persistence.*;

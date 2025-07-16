@@ -38,14 +38,9 @@ public class JwtFilter extends OncePerRequestFilter {
             boolean validate = jwtUtils.validate(authHeader.substring(7));
             if(validate) {
                 String username = jwtUtils.getUserName(authHeader.substring(7));
-
-                // ✅ Authentication object banana (abhi authorities empty, baad me role bhi dal sakte)
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
-
-                // ✅ SecurityContext me set karna
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-
                 filterChain.doFilter(request, response);
             }
                 else {
