@@ -1,14 +1,23 @@
 package com.rideease.rideease_backend.services;
 
 
-import com.rideease.rideease_backend.Model.Ride;
+import com.rideease.rideease_backend.entity.Ride;
+import com.rideease.rideease_backend.repository.RideRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RideService {
 
-    public void bookRide(Ride ride)
+    private final RideRepository rideRepository;
+
+    public RideService(RideRepository rideRepository)
     {
-        System.out.println("Ride booked from " + ride.getSource() + " to " + ride.getDestination() + " for " + ride.getRiderName());
+        this.rideRepository=rideRepository;
+    }
+
+    public Ride bookRide(Ride ride)
+    {
+        System.out.println("RideModel booked from " + ride.getSource() + " to " + ride.getDestination() + " for " + ride.getRiderName());
+        return rideRepository.save(ride);
     }
 }
