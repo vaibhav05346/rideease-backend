@@ -10,13 +10,12 @@ import com.rideease.rideease_backend.services.RideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
+import static com.rideease.rideease_backend.common.Mapper.listRideEntityToListRideModel;
 import static com.rideease.rideease_backend.common.Mapper.rideEntityToRideModel;
 
 @RestController
@@ -39,5 +38,19 @@ public class RideController {
     public ApiResponse<RideModel> bookRide(@RequestBody Ride rideEntity) throws Exception {
         RideModel rideModel = rideEntityToRideModel(rideService.bookRide(rideEntity));
         return new ApiResponse<>("success","Ride booked successfully",rideModel);
+    }
+
+    @GetMapping("/myrides")
+    public ApiResponse<List<RideModel>> fetchUserRides()
+    {
+        List<RideModel> rideModel = listRideEntityToListRideModel(rideService.getMyRide());
+        return new ApiResponse<>("success","My booked Rides",rideModel);
+    }
+
+    @PutMapping("/cancel")
+    public ApiResponse<RideModel> cancelRide()
+    {
+        RideModel rideModel = rideEntityToRideModel(rideService.cancelRide());
+        return new ApiResponse<>("success","My cancelled successfully",rideModel);
     }
 }

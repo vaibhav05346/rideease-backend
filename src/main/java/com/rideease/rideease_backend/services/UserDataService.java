@@ -1,7 +1,8 @@
-package com.rideease.rideease_backend.utils;
+package com.rideease.rideease_backend.services;
 
 import com.rideease.rideease_backend.entity.UserData;
 import com.rideease.rideease_backend.repository.UserDataRepository;
+import com.rideease.rideease_backend.utils.JwtUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

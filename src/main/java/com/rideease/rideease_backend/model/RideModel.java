@@ -13,6 +13,7 @@ public class RideModel {
     private String source;
     private String destination;
     private String riderName;
-    private LocalDateTime pickupTime;
+    private LocalDateTime rideBookTime;
+    private LocalDateTime rideCancelTime;
     private String status;
 }

@@ -26,8 +26,11 @@ public class Ride {
     @Column(name="status")
     private String status;
 
-    @Column(name="pickupTime")
-    private LocalDateTime pickupTime;
+    @Column(name="rideBookTime")
+    private LocalDateTime rideBookTime;
+
+    @Column(name = "riceCancelTime")
+    private LocalDateTime rideCancelTime;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

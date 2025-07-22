@@ -3,14 +3,12 @@ package com.rideease.rideease_backend.controller;
 import com.rideease.rideease_backend.common.ApiResponse;
 import com.rideease.rideease_backend.entity.UserData;
 import com.rideease.rideease_backend.utils.JwtUtils;
-import com.rideease.rideease_backend.utils.UserDataService;
+import com.rideease.rideease_backend.services.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
