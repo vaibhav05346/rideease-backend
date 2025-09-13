@@ -1,23 +1,22 @@
 package com.rideease.rideease_backend.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
+@Table(name = "vehicle_details")
 @Data
-public class UserData {
+public class VehicleDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
-    private String userName;
+    private String vehicleName;
 
-    private String password;
+    private String vehicleColour;
 
-    private String role;
+    private String vehicleNumber;
 
-    private Long phoneNumber;
+    private String vehicleType;
 }

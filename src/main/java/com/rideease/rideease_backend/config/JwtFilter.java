@@ -27,14 +27,11 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-
-        System.out.println("Request came");
         String authHeader = request.getHeader("Authorization");
         System.out.println(authHeader);
 
         if(authHeader != null && authHeader.startsWith("Bearer"))
         {
-            System.out.println("Token is present");
             boolean validate = jwtUtils.validate(authHeader.substring(7));
             if(validate) {
                 String username = jwtUtils.getUserName(authHeader.substring(7));
@@ -62,5 +59,15 @@ public class JwtFilter extends OncePerRequestFilter {
                     response.getWriter().write("Missing token!");
                 }
             }
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        String path = request.getRequestURI();
+        return path.contains("/v3/api-docs") ||
+                path.contains("/swagger-ui") ||
+                path.contains("/swagger-resources") ||
+                path.contains("/swagger-ui.html") ||
+                path.contains("/webjars");
     }
 }
